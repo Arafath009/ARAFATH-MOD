@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>ARAFATH MOD </title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+html,
+body{
+    margin:0;
+    padding:0;
+    width:100%;
+    min-height:100%;
+}
+
+body{
+
+    min-height:100vh;
+
+    background:#050505;
+
+    color:#00ff66;
+
+    font-family:Arial,sans-serif;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:18px 12px;
+
+}
+
+
+/* =========================
+   MAIN BOX
+========================= */
+
+.container{
+
+    width:100%;
+
+    max-width:610px;
+
+    background:#080808;
+
+    border:2px solid #00ff66;
+
+    border-radius:30px;
+
+    padding:34px 28px;
+
+    text-align:center;
+
+    box-shadow:
+        0 0 18px rgba(0,255,102,.25),
+        inset 0 0 25px rgba(0,255,102,.02);
+
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.logo{
+
+    width:125px;
+
+    height:125px;
+
+    margin:0 auto 22px;
+
+    border:4px solid #00ff66;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:#00ff66;
+
+    font-size:38px;
+
+    font-weight:bold;
+
+    box-shadow:
+        0 0 16px rgba(0,255,102,.45),
+        0 0 35px rgba(0,255,102,.18);
+
+}
+
+
+/* =========================
+   TITLE
+========================= */
+
+.title{
+
+    margin:0;
+
+    color:#079bf2;
+
+    font-size:38px;
+
+    font-weight:bold;
+
+    letter-spacing:3px;
+
+}
+
+.subtitle{
+
+    margin-top:9px;
+
+    margin-bottom:30px;
+
+    color:#00ff66;
+
+    font-size:21px;
+
+}
+
+
+/* =========================
+   SYSTEM READY
+========================= */
+
+.status{
+
+    width:100%;
+
+    border:2px solid #222;
+
+    border-radius:17px;
+
+    padding:18px 12px;
+
+    margin-bottom:24px;
+
+    color:#00ff66;
+
+    font-size:20px;
+
+}
+
+.status-dot{
+
+    color:#00ff66;
+
+}
+
+
+/* =========================
+   TERMINAL
+========================= */
+
+.terminal{
+
+    width:100%;
+
+    background:#000;
+
+    border:2px solid #222;
+
+    border-radius:15px;
+
+    padding:18px 17px;
+
+    text-align:left;
+
+    margin-bottom:28px;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size:16px;
+
+    line-height:1.85;
+
+    color:#00ff66;
+
+}
+
+
+/* =========================
+   GENERATE BUTTON
+========================= */
+
+.generate{
+
+    width:100%;
+
+    border:0;
+
+    border-radius:16px;
+
+    padding:19px 12px;
+
+    background:#00ff66;
+
+    color:#050505;
+
+    font-size:23px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.15s;
+
+}
+
+.generate:active{
+
+    transform:scale(.98);
+
+}
+
+.generate:disabled{
+
+    opacity:.5;
+
+    cursor:not-allowed;
+
+}
+
+
+/* =========================
+   LOADING
+========================= */
+
+.loading{
+
+    display:none;
+
+    margin-top:20px;
+
+    color:#00ff66;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size:16px;
+
+}
+
+
+/* =========================
+   ERROR
+========================= */
+
+.error{
+
+    display:none;
+
+    margin-top:17px;
+
+    padding:13px;
+
+    border:1px solid #ff3333;
+
+    border-radius:11px;
+
+    color:#ff4444;
+
+    font-size:13px;
+
+}
+
+
+/* =========================
+   RESULT
+========================= */
+
+.result{
+
+    display:none;
+
+    margin-top:24px;
+
+    text-align:left;
+
+}
+
+.item{
+
+    background:#080808;
+
+    border:2px solid #222;
+
+    border-radius:13px;
+
+    padding:14px;
+
+    margin-bottom:11px;
+
+}
+
+.item-head{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:10px;
+
+}
+
+.label{
+
+    color:#777;
+
+    font-size:11px;
+
+    font-weight:bold;
+
+    margin-bottom:6px;
+
+}
+
+.value{
+
+    color:#00ff66;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    word-break:break-all;
+
+}
+
+
+/* =========================
+   COPY BUTTON
+========================= */
+
+.copy-small{
+
+    border:1px solid #00ff66;
+
+    border-radius:7px;
+
+    padding:6px 10px;
+
+    background:#080808;
+
+    color:#00ff66;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    flex-shrink:0;
+
+}
+
+.copy-small:active{
+
+    transform:scale(.95);
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:500px){
+
+    body{
+
+        padding:14px 9px;
+
+    }
+
+
+    .container{
+
+        max-width:420px;
+
+        padding:29px 20px;
+
+        border-radius:27px;
+
+    }
+
+
+    .logo{
+
+        width:110px;
+
+        height:110px;
+
+        border-width:4px;
+
+        font-size:34px;
+
+        margin-bottom:19px;
+
+    }
+
+
+    .title{
+
+        font-size:29px;
+
+        letter-spacing:2px;
+
+    }
+
+
+    .subtitle{
+
+        font-size:18px;
+
+        margin-top:8px;
+
+        margin-bottom:25px;
+
+    }
+
+
+    .status{
+
+        font-size:18px;
+
+        padding:16px 10px;
+
+        margin-bottom:20px;
+
+    }
+
+
+    .terminal{
+
+        font-size:14px;
+
+        padding:16px 13px;
+
+        margin-bottom:23px;
+
+        line-height:1.8;
+
+    }
+
+
+    .generate{
+
+        font-size:20px;
+
+        padding:18px 10px;
+
+    }
+
+
+    .loading{
+
+        font-size:14px;
+
+    }
+
+
+    .value{
+
+        font-size:16px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- LOGO -->
+
+    <div class="logo">
+
+        AM
+
+    </div>
+
+
+    <!-- TITLE -->
+
+    <h1 class="title">
+
+        ARAFATH MOD
+
+    </h1>
+
+
+    <div class="subtitle">
+
+        VIP KEY GENERATOR
+
+    </div>
+
+
+    <!-- SYSTEM READY -->
+
+    <div class="status">
+
+        <span class="status-dot">•</span>
+
+        SYSTEM READY
+
+    </div>
+
+
+    <!-- TERMINAL -->
+
+    <div class="terminal">
+
+        <div>
+            &gt; Initializing generator...
+        </div>
+
+        <div>
+            &gt; Firebase connection ready
+        </div>
+
+        <div>
+            &gt; Waiting for request...
+        </div>
+
+    </div>
+
+
+    <!-- GENERATE BUTTON -->
+
+    <button
+        id="generate"
+        class="generate"
+        onclick="generateKey()">
+
+        GENERATE KEY
+
+    </button>
+
+
+    <!-- LOADING -->
+
+    <div
+        id="loading"
+        class="loading">
+
+        ⏳ Generating Key...
+
+    </div>
+
+
+    <!-- ERROR -->
+
+    <div
+        id="error"
+        class="error">
+
+    </div>
+
+
+    <!-- RESULT -->
+
+    <div
+        id="result"
+        class="result">
+
+
+        <!-- USERNAME -->
+
+        <div class="item">
+
+            <div class="item-head">
+
+                <div class="label">
+
+                    USERNAME
+
+                </div>
+
+
+                <button
+                    class="copy-small"
+                    onclick="copyText('username', this)">
+
+                    COPY
+
+                </button>
+
+            </div>
+
+
+            <div
+                id="username"
+                class="value">
+
+            </div>
+
+        </div>
+
+
+        <!-- PASSWORD -->
+
+        <div class="item">
+
+            <div class="item-head">
+
+                <div class="label">
+
+                    PASSWORD
+
+                </div>
+
+
+                <button
+                    class="copy-small"
+                    onclick="copyText('password', this)">
+
+                    COPY
+
+                </button>
+
+            </div>
+
+
+            <div
+                id="password"
+                class="value">
+
+            </div>
+
+        </div>
+
+
+        <!-- VALIDITY -->
+
+        <div class="item">
+
+            <div class="label">
+
+                VALIDITY
+
+            </div>
+
+
+            <div
+                id="validity"
+                class="value">
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<script>
+
+
+/* =========================
+   GENERATE KEY
+========================= */
+
+/*
+   =========================
+   BACKEND CONFIG
+   =========================
+
+   GitHub Pages শুধু index.html চালাবে।
+   generate.php থাকবে InfinityFree-তে।
+
+   নিচের URL-এ তোমার আসল InfinityFree domain বসাবে।
+   Example:
+   https://arafathmod.great-site.net/generate.php
+*/
+const API_URL =
+    "https://arafathkey.rf.gd/generate.php";
+
+
+/*
+   =========================
+   ONE-TIME TOKEN
+   =========================
+
+   Final link হবে:
+   https://YOUR-USERNAME.github.io/YOUR-REPO/?token=XXXXXXXX
+
+   Token PHP server-side validate করবে।
+*/
+function getToken(){
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+    return (
+        params.get("token") ||
+        ""
+    ).trim();
+
+}
+
+
+async function generateKey(){
+
+    const btn =
+        document.getElementById(
+            "generate"
+        );
+
+    const loading =
+        document.getElementById(
+            "loading"
+        );
+
+    const result =
+        document.getElementById(
+            "result"
+        );
+
+    const error =
+        document.getElementById(
+            "error"
+        );
+
+
+    const token =
+        getToken();
+
+
+    btn.disabled = true;
+
+    loading.style.display =
+        "block";
+
+    result.style.display =
+        "none";
+
+    error.style.display =
+        "none";
+
+
+    try{
+
+        if(!token){
+
+            throw new Error(
+                "Invalid or missing access link."
+            );
+
+        }
+
+
+        if(
+            !API_URL ||
+            API_URL.indexOf(
+                "YOUR-INFINITYFREE-DOMAIN"
+            ) !== -1
+        ){
+
+            throw new Error(
+                "Please set your InfinityFree generate.php URL in index.html."
+            );
+
+        }
+
+
+        /*
+           Token PHP-তে POST করা হচ্ছে।
+           PHP-কে token-এর one-time status
+           server-side verify করতে হবে।
+        */
+        const response =
+            await fetch(
+                API_URL,
+                {
+                    method:"POST",
+                    headers:{
+                        "Content-Type":
+                            "application/x-www-form-urlencoded"
+                    },
+                    body:
+                        "token=" +
+                        encodeURIComponent(token)
+                }
+            );
+
+
+        if(!response.ok){
+
+            throw new Error(
+                "Server error: " +
+                response.status
+            );
+
+        }
+
+
+        const data =
+            await response.json();
+
+
+        if(!data.success){
+
+            throw new Error(
+                data.error ||
+                "Key generation failed"
+            );
+
+        }
+
+
+        /*
+           USERNAME
+        */
+
+        document.getElementById(
+            "username"
+        ).textContent =
+            data.username;
+
+
+        /*
+           PASSWORD
+        */
+
+        document.getElementById(
+            "password"
+        ).textContent =
+            data.password;
+
+
+        /*
+           VALIDITY
+        */
+
+        document.getElementById(
+            "validity"
+        ).textContent =
+            data.validity;
+
+
+        /*
+           SHOW RESULT
+        */
+
+        result.style.display =
+            "block";
+
+
+        /*
+           Successful one-time redemption:
+           button আর দেখানো হবে না।
+        */
+
+        btn.style.display =
+            "none";
+
+
+    }catch(e){
+
+        error.textContent =
+            "ERROR: " + e.message;
+
+        error.style.display =
+            "block";
+
+
+        btn.style.display =
+            "block";
+
+        btn.disabled =
+            false;
+
+    }
+
+
+    loading.style.display =
+        "none";
+
+}
+
+
+/* =========================
+   COPY USERNAME / PASSWORD
+========================= */
+
+async function copyText(
+    id,
+    button
+){
+
+    const element =
+        document.getElementById(id);
+
+
+    const text =
+        element.textContent.trim();
+
+
+    if(!text){
+
+        return;
+
+    }
+
+
+    const oldText =
+        button.textContent;
+
+
+    try{
+
+        await navigator.clipboard.writeText(
+            text
+        );
+
+
+        button.textContent =
+            "COPIED";
+
+
+        setTimeout(function(){
+
+            button.textContent =
+                oldText;
+
+        },1200);
+
+
+    }catch(e){
+
+        /*
+           Fallback copy
+        */
+
+        const textarea =
+            document.createElement(
+                "textarea"
+            );
+
+
+        textarea.value =
+            text;
+
+
+        textarea.style.position =
+            "fixed";
+
+        textarea.style.left =
+            "-9999px";
+
+
+        document.body.appendChild(
+            textarea
+        );
+
+
+        textarea.focus();
+
+        textarea.select();
+
+
+        try{
+
+            document.execCommand(
+                "copy"
+            );
+
+
+            button.textContent =
+                "COPIED";
+
+
+            setTimeout(function(){
+
+                button.textContent =
+                    oldText;
+
+            },1200);
+
+
+        }catch(err){
+
+            alert(
+                "COPY FAILED"
+            );
+
+        }
+
+
+        document.body.removeChild(
+            textarea
+        );
+
+    }
+
+}
+
+</script>
+
+
+</body>
+
+</html>
