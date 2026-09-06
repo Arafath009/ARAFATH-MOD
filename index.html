@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARAFATH MOD</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+html,body{
+    margin:0;
+    padding:0;
+    width:100%;
+    min-height:100%;
+}
+
+body{
+    min-height:100vh;
+    background:#050505;
+    color:#00ff66;
+    font-family:Arial,sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:18px 12px;
+}
+
+.container{
+    width:100%;
+    max-width:610px;
+    background:#080808;
+    border:2px solid #00ff66;
+    border-radius:30px;
+    padding:34px 28px;
+    text-align:center;
+    box-shadow:
+        0 0 18px rgba(0,255,102,.25),
+        inset 0 0 25px rgba(0,255,102,.02);
+}
+
+.logo{
+    width:125px;
+    height:125px;
+    margin:0 auto 22px;
+    border:4px solid #00ff66;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#00ff66;
+    font-size:38px;
+    font-weight:bold;
+    box-shadow:
+        0 0 16px rgba(0,255,102,.45),
+        0 0 35px rgba(0,255,102,.18);
+}
+
+.title{
+    margin:0;
+    color:#079bf2;
+    font-size:38px;
+    font-weight:bold;
+    letter-spacing:3px;
+}
+
+.subtitle{
+    margin-top:9px;
+    margin-bottom:30px;
+    color:#00ff66;
+    font-size:21px;
+}
+
+.status{
+    width:100%;
+    border:2px solid #222;
+    border-radius:17px;
+    padding:18px 12px;
+    margin-bottom:24px;
+    color:#00ff66;
+    font-size:20px;
+}
+
+.terminal{
+    width:100%;
+    background:#000;
+    border:2px solid #222;
+    border-radius:15px;
+    padding:18px 17px;
+    text-align:left;
+    margin-bottom:28px;
+    font-family:"Courier New",monospace;
+    font-size:16px;
+    line-height:1.85;
+    color:#00ff66;
+}
+
+.generate{
+    width:100%;
+    border:0;
+    border-radius:16px;
+    padding:19px 12px;
+    background:#00ff66;
+    color:#050505;
+    font-size:23px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.15s;
+}
+
+.generate:active{
+    transform:scale(.98);
+}
+
+.generate:disabled{
+    opacity:.5;
+    cursor:not-allowed;
+}
+
+.loading{
+    display:none;
+    margin-top:20px;
+    color:#00ff66;
+    font-family:"Courier New",monospace;
+    font-size:16px;
+}
+
+.error{
+    display:none;
+    margin-top:17px;
+    padding:13px;
+    border:1px solid #ff3333;
+    border-radius:11px;
+    color:#ff4444;
+    font-size:13px;
+}
+
+.result{
+    display:none;
+    margin-top:24px;
+    text-align:left;
+}
+
+.item{
+    background:#080808;
+    border:2px solid #222;
+    border-radius:13px;
+    padding:14px;
+    margin-bottom:11px;
+}
+
+.item-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+}
+
+.label{
+    color:#777;
+    font-size:11px;
+    font-weight:bold;
+    margin-bottom:6px;
+}
+
+.value{
+    color:#00ff66;
+    font-family:"Courier New",monospace;
+    font-size:18px;
+    font-weight:bold;
+    word-break:break-all;
+}
+
+.copy-small{
+    border:1px solid #00ff66;
+    border-radius:7px;
+    padding:6px 10px;
+    background:#080808;
+    color:#00ff66;
+    font-size:10px;
+    font-weight:bold;
+    cursor:pointer;
+    flex-shrink:0;
+}
+
+.copy-small:active{
+    transform:scale(.95);
+}
+
+@media(max-width:500px){
+
+    body{
+        padding:14px 9px;
+    }
+
+    .container{
+        max-width:420px;
+        padding:29px 20px;
+        border-radius:27px;
+    }
+
+    .logo{
+        width:110px;
+        height:110px;
+        border-width:4px;
+        font-size:34px;
+        margin-bottom:19px;
+    }
+
+    .title{
+        font-size:29px;
+        letter-spacing:2px;
+    }
+
+    .subtitle{
+        font-size:18px;
+        margin-top:8px;
+        margin-bottom:25px;
+    }
+
+    .status{
+        font-size:18px;
+        padding:16px 10px;
+        margin-bottom:20px;
+    }
+
+    .terminal{
+        font-size:14px;
+        padding:16px 13px;
+        margin-bottom:23px;
+        line-height:1.8;
+    }
+
+    .generate{
+        font-size:20px;
+        padding:18px 10px;
+    }
+
+    .loading{
+        font-size:14px;
+    }
+
+    .value{
+        font-size:16px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="logo">
+        AM
+    </div>
+
+    <h1 class="title">
+        ARAFATH MOD
+    </h1>
+
+    <div class="subtitle">
+        VIP KEY GENERATOR
+    </div>
+
+    <div class="status">
+        <span>•</span>
+        SYSTEM READY
+    </div>
+
+    <div class="terminal">
+        <div>&gt; Initializing generator...</div>
+        <div>&gt; Firebase connection ready</div>
+        <div id="terminalStatus">&gt; Checking access link...</div>
+    </div>
+
+    <button
+        id="generate"
+        class="generate"
+        onclick="startAccess()">
+        CONTINUE
+    </button>
+
+    <div id="loading" class="loading">
+        ⏳ Processing...
+    </div>
+
+    <div id="error" class="error"></div>
+
+    <div id="result" class="result">
+
+        <div class="item">
+
+            <div class="item-head">
+
+                <div class="label">
+                    USERNAME
+                </div>
+
+                <button
+                    class="copy-small"
+                    onclick="copyText('username',this)">
+                    COPY
+                </button>
+
+            </div>
+
+            <div id="username" class="value"></div>
+
+        </div>
+
+        <div class="item">
+
+            <div class="item-head">
+
+                <div class="label">
+                    PASSWORD
+                </div>
+
+                <button
+                    class="copy-small"
+                    onclick="copyText('password',this)">
+                    COPY
+                </button>
+
+            </div>
+
+            <div id="password" class="value"></div>
+
+        </div>
+
+        <div class="item">
+
+            <div class="label">
+                VALIDITY
+            </div>
+
+            <div id="validity" class="value"></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+const API_URL =
+    "https://arafathkey.rf.gd/generate.php";
+
+function getToken(){
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+    return (
+        params.get("token") || ""
+    ).trim();
+}
+
+
+/*
+============================================================
+CHECK TOKEN
+============================================================
+*/
+
+async function checkToken(){
+
+    const token = getToken();
+
+    const btn =
+        document.getElementById("generate");
+
+    const status =
+        document.getElementById("terminalStatus");
+
+    const error =
+        document.getElementById("error");
+
+    if(!token){
+
+        status.textContent =
+            "> Invalid access link.";
+
+        btn.disabled = true;
+
+        error.textContent =
+            "ERROR: Invalid or missing access link.";
+
+        error.style.display = "block";
+
+        return;
+    }
+
+    try{
+
+        const response =
+            await fetch(
+                API_URL +
+                "?action=check&token=" +
+                encodeURIComponent(token),
+                {
+                    method:"GET",
+                    cache:"no-store"
+                }
+            );
+
+        const data =
+            await response.json();
+
+        if(
+            !response.ok ||
+            !data.success
+        ){
+
+            throw new Error(
+                data.error ||
+                "LINK EXPIRED"
+            );
+        }
+
+        status.textContent =
+            "> Access link verified.";
+
+        btn.disabled = false;
+
+    }catch(e){
+
+        status.textContent =
+            "> LINK EXPIRED";
+
+        btn.disabled = true;
+
+        error.textContent =
+            "ERROR: " + e.message;
+
+        error.style.display =
+            "block";
+    }
+}
+
+
+/*
+============================================================
+GET DYNAMIC VPLINK
+============================================================
+*/
+
+async function startAccess(){
+
+    const token = getToken();
+
+    const btn =
+        document.getElementById("generate");
+
+    const loading =
+        document.getElementById("loading");
+
+    const error =
+        document.getElementById("error");
+
+    if(!token){
+
+        showError(
+            "Invalid or missing access link."
+        );
+
+        return;
+    }
+
+    btn.disabled = true;
+
+    loading.textContent =
+        "⏳ Preparing secure link...";
+
+    loading.style.display =
+        "block";
+
+    error.style.display =
+        "none";
+
+    try{
+
+        /*
+         * PHP server will return a newly
+         * generated VPLINK URL for this token.
+         */
+
+        const response =
+            await fetch(
+                API_URL +
+                "?action=link&token=" +
+                encodeURIComponent(token),
+                {
+                    method:"GET",
+                    cache:"no-store"
+                }
+            );
+
+        const data =
+            await response.json();
+
+        if(
+            !response.ok ||
+            !data.success
+        ){
+
+            throw new Error(
+                data.error ||
+                "Unable to create access link."
+            );
+        }
+
+        if(!data.url){
+
+            throw new Error(
+                "VPLINK URL was not returned."
+            );
+        }
+
+        /*
+         * Save token before leaving GitHub.
+         */
+
+        sessionStorage.setItem(
+            "arafath_token",
+            token
+        );
+
+        sessionStorage.setItem(
+            "arafath_waiting",
+            "1"
+        );
+
+        /*
+         * Send user to dynamic VPLINK.
+         */
+
+        window.location.href =
+            data.url;
+
+    }catch(e){
+
+        btn.disabled = false;
+
+        loading.style.display =
+            "none";
+
+        showError(e.message);
+    }
+}
+
+
+/*
+============================================================
+GENERATE KEY AFTER RETURN
+============================================================
+*/
+
+async function generateKey(){
+
+    const token =
+        getToken() ||
+        sessionStorage.getItem(
+            "arafath_token"
+        );
+
+    const btn =
+        document.getElementById("generate");
+
+    const loading =
+        document.getElementById("loading");
+
+    const result =
+        document.getElementById("result");
+
+    const error =
+        document.getElementById("error");
+
+    if(!token){
+
+        showError(
+            "Invalid or missing access link."
+        );
+
+        return;
+    }
+
+    btn.disabled = true;
+
+    loading.textContent =
+        "⏳ Generating Key...";
+
+    loading.style.display =
+        "block";
+
+    error.style.display =
+        "none";
+
+    try{
+
+        const response =
+            await fetch(
+                API_URL,
+                {
+                    method:"POST",
+
+                    headers:{
+                        "Content-Type":
+                        "application/x-www-form-urlencoded"
+                    },
+
+                    body:
+                        "token=" +
+                        encodeURIComponent(token)
+                }
+            );
+
+        const data =
+            await response.json();
+
+        if(
+            !response.ok ||
+            !data.success
+        ){
+
+            throw new Error(
+                data.error ||
+                "Key generation failed"
+            );
+        }
+
+        document.getElementById(
+            "username"
+        ).textContent =
+            data.username;
+
+        document.getElementById(
+            "password"
+        ).textContent =
+            data.password;
+
+        document.getElementById(
+            "validity"
+        ).textContent =
+            data.validity;
+
+        result.style.display =
+            "block";
+
+        btn.style.display =
+            "none";
+
+        sessionStorage.removeItem(
+            "arafath_token"
+        );
+
+        sessionStorage.removeItem(
+            "arafath_waiting"
+        );
+
+    }catch(e){
+
+        showError(e.message);
+
+        /*
+         * LINK EXPIRED হলে আর retry করতে দেব না।
+         */
+
+        if(
+            e.message
+            .toUpperCase()
+            .includes("EXPIRED")
+        ){
+
+            btn.style.display =
+                "none";
+        }else{
+
+            btn.disabled =
+                false;
+        }
+
+    }finally{
+
+        loading.style.display =
+            "none";
+    }
+}
+
+
+/*
+============================================================
+RETURN DETECTION
+============================================================
+*/
+
+function handleReturn(){
+
+    const waiting =
+        sessionStorage.getItem(
+            "arafath_waiting"
+        );
+
+    if(
+        waiting === "1"
+    ){
+
+        sessionStorage.removeItem(
+            "arafath_waiting"
+        );
+
+        /*
+         * Do NOT trust a client-side
+         * verified=1 flag.
+         *
+         * The server still decides whether
+         * the token is valid.
+         */
+
+        generateKey();
+
+    }else{
+
+        checkToken();
+    }
+}
+
+
+/*
+============================================================
+ERROR
+============================================================
+*/
+
+function showError(message){
+
+    const error =
+        document.getElementById("error");
+
+    error.textContent =
+        "ERROR: " + message;
+
+    error.style.display =
+        "block";
+}
+
+
+/*
+============================================================
+COPY
+============================================================
+*/
+
+async function copyText(id,button){
+
+    const element =
+        document.getElementById(id);
+
+    const text =
+        element.textContent.trim();
+
+    if(!text){
+        return;
+    }
+
+    const oldText =
+        button.textContent;
+
+    try{
+
+        await navigator.clipboard.writeText(
+            text
+        );
+
+        button.textContent =
+            "COPIED";
+
+        setTimeout(
+            function(){
+
+                button.textContent =
+                    oldText;
+
+            },
+            1200
+        );
+
+    }catch(e){
+
+        const textarea =
+            document.createElement(
+                "textarea"
+            );
+
+        textarea.value =
+            text;
+
+        textarea.style.position =
+            "fixed";
+
+        textarea.style.left =
+            "-9999px";
+
+        document.body.appendChild(
+            textarea
+        );
+
+        textarea.focus();
+        textarea.select();
+
+        try{
+
+            document.execCommand("copy");
+
+            button.textContent =
+                "COPIED";
+
+            setTimeout(
+                function(){
+
+                    button.textContent =
+                        oldText;
+
+                },
+                1200
+            );
+
+        }catch(err){
+
+            alert("COPY FAILED");
+
+        }
+
+        document.body.removeChild(
+            textarea
+        );
+    }
+}
+
+
+/*
+============================================================
+START
+============================================================
+*/
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        handleReturn();
+
+    }
+);
+
+</script>
+
+</body>
+</html>
